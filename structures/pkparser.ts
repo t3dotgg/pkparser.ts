@@ -121,7 +121,7 @@ export type PokeStruct = {
 };
 
 export const createPokemonStructFromPk6 = (pkx: Uint8Array) => {
-  var data = new DataView(pkx.buffer, pkx.byteOffset, pkx.byteLength);
+  const data = new DataView(pkx.buffer, pkx.byteOffset, pkx.byteLength);
 
   const ec = data.getUint32(0x0, true);
   const chk = data.getUint16(0x6, true);
@@ -179,7 +179,7 @@ export const createPokemonStructFromPk6 = (pkx: Uint8Array) => {
   const eggMove3 = data.getUint16(0x6e, true);
   const eggMove4 = data.getUint16(0x70, true);
 
-  var IV32 = data.getUint32(0x74, true);
+  const IV32 = data.getUint32(0x74, true);
   const ivHp = IV32 & 31;
   const ivAtk = (IV32 >> 5) & 31;
   const ivDef = (IV32 >> 10) & 31;
@@ -354,7 +354,7 @@ export const createPokemonStructFromPk6 = (pkx: Uint8Array) => {
 };
 
 export const createPokemonStructFromPk8 = (pkx: Uint8Array) => {
-  var data = new DataView(pkx.buffer, pkx.byteOffset, pkx.byteLength);
+  const data = new DataView(pkx.buffer, pkx.byteOffset, pkx.byteLength);
 
   const ec = data.getUint32(0x0, true);
   const chk = data.getUint16(0x6, true);
@@ -367,7 +367,7 @@ export const createPokemonStructFromPk8 = (pkx: Uint8Array) => {
   const abilityNum = pkx[0x16] & 7;
   const pid = data.getUint32(0x1c, true);
   const nature = pkx[0x20];
-  const canGigantamax = (pkx[0x16] & 16) != 0;
+  // const canGigantamax = (pkx[0x16] & 16) != 0;
   const isFatefulEncounter = (pkx[0x22] & 1) == 1;
   const gender = (pkx[0x22] >> 2) & 3;
   const form = pkx[0x1d] >> 3;
@@ -413,7 +413,7 @@ export const createPokemonStructFromPk8 = (pkx: Uint8Array) => {
   const eggMove3 = data.getUint16(0x86, true);
   const eggMove4 = data.getUint16(0x88, true);
 
-  var IV32 = data.getUint32(0x74, true);
+  const IV32 = data.getUint32(0x74, true);
   const ivHp = IV32 & 31;
   const ivAtk = (IV32 >> 5) & 31;
   const ivDef = (IV32 >> 10) & 31;
