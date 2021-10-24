@@ -1,9 +1,9 @@
 export {};
 
-import PkBase from "./structures/pkbase.ts";
+import { createPokemonStructFromPkx } from "./structures/pkparser.ts";
 
 const data = await Deno.readFile("./data/venus.pk6");
 
-const eevee = new PkBase(data, 0, 3, false);
+const custom = createPokemonStructFromPkx(data);
 
-console.log("eevee?", eevee);
+console.log("eevee?", custom);
